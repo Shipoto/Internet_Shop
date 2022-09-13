@@ -14,7 +14,7 @@
 
 Clone repository to your folder:
 
-"git clone https://github.com/Shipoto/"
+"git clone https://github.com/Shipoto/Internet_Shop"
 
 Create in your folder virtual environment:
 
@@ -39,4 +39,6 @@ Follow by link in console (for example http://127.0.0.1:8000/)
 You can use login: user and password: 1234 for authentication.
 
 Sample of this web site:
-![](https://github.com/Shipoto/Library_Flask/blob/master/static/images/demo/image-lib-title.PNG)
+![](https://github.com/Shipoto/Internet_Shop/blob/master/static/readme_img/1.PNG)
+![](https://github.com/Shipoto/Internet_Shop/blob/master/static/readme_img/2.PNG)
+![](https://github.com/Shipoto/Internet_Shop/blob/master/static/readme_img/3.PNG)
