@@ -10,35 +10,41 @@
 
 (This website is developing)
 
-### Instalation:
+### Installation:
 
-Clone repository to your folder:
++ Clone repository to your folder:
 
-"git clone https://github.com/Shipoto/Internet_Shop"
+    "git clone https://github.com/Shipoto/Internet_Shop"
 
-Create in your folder virtual environment:
++ Create in your folder virtual environment:
 
-"virtualenv venv"
+    "virtualenv venv"
 
-Activate virtual environment:
++ Activate virtual environment:
 
-". venv/Scripts/activate"
+    ". venv/Scripts/activate"
 
-Python 3.8.10 required
++ Python 3.8.10 required
 
-Install required dependencies:
++ Install required dependencies:
 
-"pip install -r requirements.txt"
+    "pip install -r requirements.txt"
 
-Start project:
++ Start project:
 
-"python manage.py runserver"
+    "python manage.py runserver"
 
-Follow by link in console (for example http://127.0.0.1:8000/)
++ Follow by link in console (for example http://127.0.0.1:8000/)
 
-You can use login: user and password: 1234 for authentication.
+    You can use login: user and password: 1234 for authentication.
 
 Sample of this web site:
+
+### Home page
 ![](https://github.com/Shipoto/Internet_Shop/blob/master/static/readme_img/1.PNG)
+
+### Footer
 ![](https://github.com/Shipoto/Internet_Shop/blob/master/static/readme_img/2.PNG)
+
+### Cart
 ![](https://github.com/Shipoto/Internet_Shop/blob/master/static/readme_img/3.PNG)

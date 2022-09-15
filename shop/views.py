@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DeleteView
 
+from main.scraping import souping, ScrapingError
 from shop.forms import AddQuantityForm
 from shop.models import Product, Order, OrderItem
 
@@ -11,6 +12,22 @@ from shop.models import Product, Order, OrderItem
 class ProductsListView(ListView):
     model = Product
     template_name = 'shop/shop.html'
+
+
+class ProductsDetailView(DetailView):
+    model = Product
+    template_name = 'shop/shop-details.html'
+
+
+def fill_database(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        try:
+            souping()
+        except ScrapingError as err:
+            print(str(err))
+            return (request, 'shop/fill-database.html', {'message': str(err)})
+
+    return render(request, 'shop/fill-database.html', {'message': None})
 
 
 @login_required(login_url=reverse_lazy('login'))
