@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView, DeleteView, DetailView
 
 from main.scraping import souping, ScrapingError
 from shop.forms import AddQuantityForm
@@ -16,7 +16,7 @@ class ProductsListView(ListView):
 
 class ProductsDetailView(DetailView):
     model = Product
-    template_name = 'shop/shop-details.html'
+    template_name = 'shop/detail.html'
 
 
 def fill_database(request):
@@ -34,9 +34,9 @@ def fill_database(request):
 def add_item_to_cart(request, pk):
     if request.method == 'POST':
         quantity_form = AddQuantityForm(request.POST)
-        if not quantity_form.is_valid():
-            # quantity = quantity_form.cleaned_data['quantity']
-            quantity = 1
+        if quantity_form.is_valid():
+            quantity = quantity_form.cleaned_data['quantity']
+            # quantity = 1
             if quantity:
                 cart = Order.get_cart(request.user)
                 # product = Product.objects.get(pk=pk)

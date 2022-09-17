@@ -6,6 +6,24 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 
 
+class Category(models.Model):
+    category_id = models.CharField(max_length=100, verbose_name='Category_id')
+    category_name = models.CharField(max_length=200, verbose_name='Category_name')
+    category_url = models.URLField(blank=True, null=True)
+
+    def __str__(self):
+        return f'{self.category_id} - {self.category_name}'
+
+
+class Shop(models.Model):
+    shop_id = models.CharField(max_length=100, verbose_name='Shop_id')
+    shop_name = models.CharField(max_length=200, verbose_name='shop_name')
+    shop_url = models.URLField(blank=True, null=True, verbose_name='shop_url')
+
+    def __str__(self):
+        return f'{self.shop_name} - {self.shop_url}'
+
+
 class Product(models.Model):
     name = models.CharField(max_length=255, verbose_name='product_name')
     code = models.CharField(max_length=255, verbose_name='product_code')
@@ -14,7 +32,8 @@ class Product(models.Model):
     image_url = models.URLField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
     # image = models.ImageField(upload_to='img/%Y/%M/%D', blank=True)
-
+    category_id = models.ForeignKey(Category, on_delete='CASCADE')
+    shop_id = models.ForeignKey(Shop, on_delete='CASCADE')
 
     class Meta:
         ordering = ['pk']
@@ -57,7 +76,7 @@ class Order(models.Model):
         ordering = ['pk']
 
     def __str__(self):
-        return f'{self.user} --- {self.status} --- {self.amount}'
+        return f'{self.user} - {self.status} - {self.amount}'
 
     @staticmethod
     def get_cart(user: User):

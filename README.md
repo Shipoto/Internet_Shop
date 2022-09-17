@@ -3,6 +3,7 @@
 ##  
 ### Internet Shop abilities:
 + Register
++ Parsing other internet shop and add products on this web site
 + Adding items in cart
 
 
@@ -11,6 +12,8 @@
 (This website is developing)
 
 ### Installation:
+
++ Python 3.8.10 required
 
 + Clone repository to your folder:
 
@@ -22,9 +25,8 @@
 
 + Activate virtual environment:
 
-    ". venv/Scripts/activate"
-
-+ Python 3.8.10 required
+    ". venv/bin/activate"       (for Linux)
+    ". venv/Scripts/activate"   (for Windows)
 
 + Install required dependencies:
 
