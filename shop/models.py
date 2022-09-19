@@ -7,7 +7,7 @@ from django.dispatch import receiver
 
 
 class Category(models.Model):
-    category_id = models.CharField(max_length=100, verbose_name='Category_id')
+    category_id = models.CharField(max_length=100, verbose_name='Category_id', null=True)
     category_name = models.CharField(max_length=200, verbose_name='Category_name')
     category_url = models.URLField(blank=True, null=True)
 
@@ -16,7 +16,7 @@ class Category(models.Model):
 
 
 class Shop(models.Model):
-    shop_id = models.CharField(max_length=100, verbose_name='Shop_id')
+    shop_id = models.CharField(max_length=100, verbose_name='Shop_id', null=True)
     shop_name = models.CharField(max_length=200, verbose_name='shop_name')
     shop_url = models.URLField(blank=True, null=True, verbose_name='shop_url')
 
@@ -32,8 +32,8 @@ class Product(models.Model):
     image_url = models.URLField(blank=True, null=True)
     note = models.TextField(blank=True, null=True)
     # image = models.ImageField(upload_to='img/%Y/%M/%D', blank=True)
-    category_id = models.ForeignKey(Category, on_delete='CASCADE')
-    shop_id = models.ForeignKey(Shop, on_delete='CASCADE')
+    category_id = models.ForeignKey(Category, on_delete=models.PROTECT, null=True)
+    shop_id = models.ForeignKey(Shop, on_delete=models.PROTECT, null=True)
 
     class Meta:
         ordering = ['pk']
@@ -85,8 +85,8 @@ class Order(models.Model):
                                     ).first()
         if not cart:
             cart = Order.objects.create(user=user,
-                                    status=Order.STATUS_CART,
-                                    amount=0)
+                                        status=Order.STATUS_CART,
+                                        amount=0)
         return cart
 
     def get_amount(self):
@@ -100,6 +100,7 @@ class Order(models.Model):
         if items and self.status == Order.STATUS_CART:
             self.status == Order.STATUS_WAITING_FOR_PAYMENT
             self.save()
+
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)

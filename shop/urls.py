@@ -14,5 +14,4 @@ urlpatterns = [
     path('delete_item/<int:pk>', views.CartDeleteItem.as_view(), name='cart_delete_item'),
     path('make-order/', views.make_order, name='make_order'),
     path('checkout/', views.proceed_to_checkout, name='checkout'),
-    # path('fill-database/', views.fill_database, name='fill_database'),
 ]

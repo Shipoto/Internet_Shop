@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Product, Payment, OrderItem, Order
+from shop.models import Product, Payment, OrderItem, Order, Shop, Category
 
 
 @admin.register(Product)
@@ -23,4 +23,16 @@ class OrderItemAdmin(admin.ModelAdmin):
     list_editable = ['product', 'quantity']
 
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['category_name', 'category_url', 'category_id']
+    list_editable = []
+
+
+class ShopAdmin(admin.ModelAdmin):
+    list_display = ['shop_name', 'shop_url', 'shop_id']
+    list_editable = []
+
+
 admin.site.register(Payment)
+admin.site.register(Category)
+admin.site.register(Shop)

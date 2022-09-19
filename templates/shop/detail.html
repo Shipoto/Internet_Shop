@@ -100,7 +100,7 @@
                                 <input type="radio" class="custom-control-input" id="color-5" name="color">
                                 <label class="custom-control-label" for="color-5">Green</label>
                             </div>
-<!--                        </form>-->
+                        </form>
                     </div>
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px;">
@@ -111,23 +111,26 @@
                             </div>
 
 
-                                <label class="form-label" for="id_quantity">Quantity:</label>
-                                <input type="number" name="quantity" value="1" min="1" required id="id_quantity"/>
-<!--                            <input type="number" name="quantity" class="form-control bg-secondary border-0 text-center" value="1" min="1" required id="id_quantity">-->
+<!--                                <label class="form-label" for="id_quantity">Quantity:</label>-->
+<!--                                <input type="number" name="quantity" value="1" min="1" required id="id_quantity"/>-->
+                            <input type="number" name="quantity" class="form-control bg-secondary border-0 text-center" value="{{ q }}" min="1" required id="id_quantity">
 
                             <div class="input-group-btn">
-<!--                                <button class="btn btn-primary btn-plus">-->
-<!--                                    <i class="fa fa-plus"></i>-->
-<!--                                </button>-->
+                                <button class="btn btn-primary btn-plus">
+                                    <i class="fa fa-plus"></i>
+                                </button>
                             </div>
                         </div>
+
+
+
                         </form>
                         <form method="post" action="{% url 'add_item_to_cart' product.pk %}">
                             {% csrf_token %}
                              <button class="learn-more-btn" type="submit">buy now</button>
                             <form method="post" action="{% url 'add_item_to_cart' product.pk %}">
-<!--                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To-->
-<!--                            Cart</button>-->
+                        <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
+                            Cart</button>
                         </form>
                     </div>
 
